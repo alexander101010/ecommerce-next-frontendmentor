@@ -1,0 +1,59 @@
+$nav-height: 7rem;
+@import '../../styles/variables';
+
+.title {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $nav-height;
+
+  max-width: 1140px;
+  margin: 0 auto;
+  border-bottom: 2px solid hsl(223, 64%, 98%);
+
+  @media only screen and (max-width: 1200px) {
+    padding: 0 3rem;
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 3rem;
+    display: flex;
+    align-items: center;
+
+    &__item {
+      height: $nav-height;
+      display: flex;
+      align-items: center;
+      color: $color-grayblue;
+      border-bottom: 4px solid transparent;
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+
+      &.active {
+        border-bottom: 4px solid $color-primary;
+        // font-weight: bold;
+        color: $color-dark-grayblue;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
