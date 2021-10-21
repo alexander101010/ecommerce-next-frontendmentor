@@ -1,0 +1,21 @@
+.avatar {
+  height: 50px;
+  margin-left: 45px;
+  margin-right: 5px;
+  border: solid 2px transparent;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.active {
+    border: solid 2px hsl(26, 100%, 55%);
+  }
+}
+
+.cart-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
