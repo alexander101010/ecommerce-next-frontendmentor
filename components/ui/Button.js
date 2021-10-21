@@ -1,5 +1,3 @@
-import './Button.scss';
-
 const Button = (props) => {
   const classes = 'button ' + props.className;
   return (
@@ -12,3 +10,5 @@ const Button = (props) => {
     </button>
   );
 };
+
+export default Button;
