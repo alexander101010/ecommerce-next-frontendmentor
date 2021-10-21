@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
-import Layout from '../components/layout/Layout';
-// import styles from '../styles/Home.module.css';
+import MainNavigation from '../components/layout/MainNavigation';
+import ShoeGallery from '../components/shoes/ShoeGallery';
+import ShoeInfo from '../components/shoes/ShoeInfo';
 
 export default function Home() {
   return (
@@ -26,6 +27,13 @@ export default function Home() {
         />
         <title>Frontend Mentor | E-commerce product page</title>
       </Head>
+      <main>
+        <MainNavigation />
+        <section className='shoe-container'>
+          <ShoeGallery />
+          <ShoeInfo />
+        </section>
+      </main>
     </Fragment>
   );
 }
