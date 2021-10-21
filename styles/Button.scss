@@ -1,0 +1,51 @@
+@import './variables';
+
+.button {
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.button.primary {
+  //TODO: too squeezed at <800px
+  font-size: 0.9rem;
+  color: white;
+  padding: 0.25rem 1rem;
+  background-color: $color-primary;
+  border: 1px solid $color-primary;
+  border-radius: 10px;
+  height: $button-height;
+
+  // padding: 1rem 5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 66%;
+
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  box-shadow: 0px 23px 46px -11px rgba(186, 101, 40, 0.774);
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    transform: translateY(3px) scale(0.98);
+    box-shadow: 0px 23px 46px -11px rgba(186, 101, 40, 0.574);
+  }
+}
+
+.btn-left-margin {
+  margin-left: 1rem;
+}
