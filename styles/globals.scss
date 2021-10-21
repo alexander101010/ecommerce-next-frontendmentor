@@ -13,3 +13,32 @@ a {
 * {
   box-sizing: border-box;
 }
+
+main {
+  // display: flex;
+}
+
+.shoe-container {
+  display: flex;
+  max-width: 1140px;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 5rem;
+
+  & > * {
+    width: 100%;
+    padding: 5rem;
+  }
+}
+
+p,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.hover-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
