@@ -2,6 +2,7 @@ export default function MinusSignSVG(props) {
   return (
     <svg
       className={props.className}
+      onClick={props.onClick}
       width='12'
       height='4'
       xmlns='http://www.w3.org/2000/svg'

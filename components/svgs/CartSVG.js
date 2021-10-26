@@ -4,6 +4,7 @@ export default function CartSVG(props) {
       width='22'
       height='20'
       className={props.className}
+      onClick={props.onClick}
       xmlns='http://www.w3.org/2000/svg'
     >
       <path

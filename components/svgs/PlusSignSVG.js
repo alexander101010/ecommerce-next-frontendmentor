@@ -2,6 +2,7 @@ export default function PlusSignSVG(props) {
   return (
     <svg
       className={props.className}
+      onClick={props.onClick}
       width='12'
       height='12'
       xmlns='http://www.w3.org/2000/svg'
@@ -13,7 +14,7 @@ export default function PlusSignSVG(props) {
           id='b'
         />
       </defs>
-      <use fill='#FF7E1B' fill-rule='nonzero' xlinkHref='#b' />
+      <use fill='#FF7E1B' fillRule='nonzero' xlinkHref='#b' />
     </svg>
   );
 }
