@@ -1,3 +1,113 @@
-.test {
-  border: 1px solid red;
+@import '../../styles/variables';
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  margin: 0 3rem 0 3rem;
+
+  position: relative;
+}
+
+.main-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.thumbnails {
+  margin-top: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  // width: 100%;
+}
+.thumbnail-box {
+  display: flex;
+  width: 21%;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &.active {
+    border: 3px solid $color-primary;
+  }
+}
+.thumbnail {
+  width: 100%;
+  // border-radius: 10px;
+  &:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  &.active {
+    // border: 2px solid $color-primary;
+    opacity: 0.3;
+    // filter: opacity(0.3);
+  }
+}
+
+// mobile gallery buttons
+
+.back,
+.forth {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+  background-color: $color-white;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media only screen and (min-width: 600px) {
+    display: none;
+  }
+}
+.back {
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
+
+.forth {
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 1000px) {
+  .gallery {
+    // flex-direction: row;
+    width: 40%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .gallery {
+    // flex-direction: row;
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .gallery {
+    display: flex;
+    width: 100%;
+  }
+
+  .main-image {
+    width: 100%;
+    border-radius: 0;
+    height: 20rem;
+    // height: calc(100% - 2rem);
+    object-fit: cover;
+  }
+
+  .thumbnails {
+    display: none;
+  }
 }
