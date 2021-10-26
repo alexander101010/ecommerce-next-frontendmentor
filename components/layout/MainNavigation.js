@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
 import CartNav from './Cart/CartNav';
+import HamburgerSVG from '../svgs/HamburgerSVG';
+
 import classes from './MainNavigation.module.scss';
 
-const MainNavigation = () => {
+const MainNavigation = ({ onShowCart, onClose, showCart }) => {
   const [activeLink, setActiveLink] = useState('');
   const navLinkClickHandler = (e) => {
     setActiveLink(e.target.textContent);
@@ -13,6 +15,7 @@ const MainNavigation = () => {
   return (
     <nav className={classes.nav}>
       <div className={classes['nav-left']}>
+        <HamburgerSVG className={'mobile-hamburger'} />
         <h1 className={classes.title}>sneakers</h1>
         <ul className={classes['nav-list']}>
           {navLinks.map((link) => (
@@ -28,7 +31,7 @@ const MainNavigation = () => {
           ))}
         </ul>
       </div>
-      <CartNav />
+      <CartNav onClose={onClose} onShowCart={onShowCart} showCart={showCart} />
     </nav>
   );
 };
