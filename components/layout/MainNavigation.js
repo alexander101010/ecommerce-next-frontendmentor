@@ -11,11 +11,17 @@ const MainNavigation = ({ onShowCart, onClose, showCart }) => {
     setActiveLink(e.target.textContent);
   };
   const navLinks = ['Collections', 'Men', 'Women', 'About', 'Contact'];
+  const openMobileMenuHandler = (e) => {
+    console.log('mobile menu should open'); //TODO:
+  };
 
   return (
     <nav className={classes.nav}>
       <div className={classes['nav-left']}>
-        <HamburgerSVG className={'mobile-hamburger'} />
+        <HamburgerSVG
+          className='mobile-hamburger'
+          onClick={openMobileMenuHandler}
+        />
         <h1 className={classes.title}>sneakers</h1>
         <ul className={classes['nav-list']}>
           {navLinks.map((link) => (
