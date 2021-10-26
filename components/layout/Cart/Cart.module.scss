@@ -1,0 +1,14 @@
+@import '../../../styles/variables';
+
+.card-title-box {
+  padding: 1.25rem;
+  border-bottom: 2px solid $color-light-grayblue;
+  h3 {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.cart-body {
+  padding: 1.5rem 1.25rem;
+}
