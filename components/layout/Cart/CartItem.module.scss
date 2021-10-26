@@ -1,0 +1,57 @@
+@import '../../../styles/variables';
+
+.item {
+  &__container {
+    display: flex;
+    align-items: center;
+    // &:not(:last-child) {
+    margin-bottom: 1rem;
+    // }
+    justify-content: space-between;
+  }
+
+  &__image {
+    width: 3.5rem;
+    border-radius: 10px;
+  }
+
+  &__infos {
+    color: $color-grayblue;
+  }
+
+  &__title {
+  }
+
+  &__prices {
+    span {
+      font-weight: 700;
+      color: $color-black;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .item {
+    &__image {
+      width: 4.5rem;
+    }
+
+    &__infos {
+      font-size: 1.3rem;
+      width: 60%;
+    }
+
+    &__title {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    &__prices {
+      span {
+        font-weight: 700;
+        color: $color-black;
+      }
+    }
+  }
+}
