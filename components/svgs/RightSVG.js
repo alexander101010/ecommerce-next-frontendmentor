@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export default function RightSVG(props) {
   return (
     <svg
@@ -9,7 +11,7 @@ export default function RightSVG(props) {
     >
       <path
         d='m2 1 8 8-8 8'
-        stroke='#1D2026'
+        stroke={props.isHovered ? 'hsl(26, 100%, 55%)' : '#1D2026'}
         strokeWidth='3'
         fill='none'
         fillRule='evenodd'
