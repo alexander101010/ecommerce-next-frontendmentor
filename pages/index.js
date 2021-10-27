@@ -1,10 +1,24 @@
 import Head from 'next/head';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import MainNavigation from '../components/layout/MainNavigation';
 import ShoeGallery from '../components/shoes/ShoeGallery';
 import ShoeInfo from '../components/shoes/ShoeInfo';
+import Cart from '../components/layout/Cart/Cart';
+import LightBox from '../components/layout/LightBox';
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState('1');
+
+  const [showCart, setShowCart] = useState(false);
+  const showCartHandler = () => setShowCart(true);
+  const closeCartHandler = () => setShowCart(false);
+
+  const [showLightBox, setShowLightBox] = useState(true);
+  const showLightBoxHandler = (mainImage) => {
+    setShowLightBox(true);
+  };
+  const closeLightBoxHandler = () => setShowLightBox(false);
+
   return (
     <Fragment>
       <Head>
@@ -28,12 +42,29 @@ export default function Home() {
         <title>Frontend Mentor | E-commerce product page</title>
       </Head>
       <main>
-        <MainNavigation />
+        <MainNavigation
+          onShowCart={showCartHandler}
+          onClose={closeCartHandler}
+          showCart={showCart}
+        />
         <section className='shoe-container'>
-          <ShoeGallery />
+          <ShoeGallery
+            onShowLightBox={showLightBoxHandler}
+            inLightBox={false}
+            setSelectedImage={setSelectedImage}
+            selectedImage={selectedImage}
+          />
           <ShoeInfo />
         </section>
       </main>
+      {showCart && <Cart onClose={closeCartHandler} />}
+      {showLightBox && (
+        <LightBox
+          onClose={closeLightBoxHandler}
+          setSelectedImage={setSelectedImage}
+          selectedImage={selectedImage}
+        />
+      )}
     </Fragment>
   );
 }
