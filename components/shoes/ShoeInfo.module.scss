@@ -1,7 +1,8 @@
 @import '../../styles/variables';
 
 .info-container {
-  border: 1px dotted orangered; //TODO: cleanup
+  // border: 1px dotted orangered; //TODO: cleanup
+  padding: 5rem;
 }
 
 .company {
@@ -23,6 +24,7 @@
   color: $color-dark-grayblue;
   font-size: 0.9rem;
   margin-bottom: 1rem;
+  line-height: 2;
 }
 
 // .price-box {
@@ -38,7 +40,7 @@
   span {
     color: $color-primary;
     background-color: $color-secondary;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 700;
     padding: 2px 5px;
     border-radius: 5px;
@@ -59,5 +61,44 @@
   // height: 3rem;
   @media only screen and (max-width: 800px) {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .info-container {
+    padding: 1.9rem;
+    margin-bottom: 3rem;
+  }
+
+  .headline {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .description {
+    color: $color-dark-grayblue;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 2;
+  }
+  .price-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sale-price {
+    font-size: 1.8rem;
+
+    span {
+      font-size: 1rem;
+    }
+  }
+  .list-price {
+    color: $color-grayblue;
+    text-decoration: line-through;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
   }
 }
