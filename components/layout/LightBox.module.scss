@@ -1,0 +1,8 @@
+.exit-box {
+  position: fixed;
+  top: -2rem;
+  right: 3rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
