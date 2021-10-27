@@ -5,56 +5,88 @@ import RightSVG from '../svgs/RightSVG';
 
 import classes from './ShoeGallery.module.scss';
 
-const ShoeGallery = () => {
-  const [mainImageNum, setMainImageNum] = useState('1');
+const ShoeGallery = ({
+  inLightBox,
+  onShowLightBox,
+  setSelectedImage,
+  selectedImage,
+}) => {
+  const [rightArrowIsHovered, setRightArrowIsHovered] = useState(false);
+  const [leftArrowIsHovered, setLeftArrowIsHovered] = useState(false);
+
   const thumbnailClickHandler = (e) => {
-    setMainImageNum(e.target.id);
+    setSelectedImage(e.target.id);
   };
 
   const leftBtnClickHandler = () => {
-    const currentImgNum = +mainImageNum; //
+    const currentImgNum = +selectedImage; //
     console.log(currentImgNum);
     if (currentImgNum === 1) {
-      setMainImageNum('4');
+      setSelectedImage('4');
     } else {
-      setMainImageNum(`${currentImgNum - 1}`);
+      setSelectedImage(`${currentImgNum - 1}`);
     }
   };
 
   const rightBtnClickHandler = () => {
-    const currentImgNum = +mainImageNum;
+    const currentImgNum = +selectedImage;
     if (currentImgNum === 4) {
-      setMainImageNum('1');
+      setSelectedImage('1');
     } else {
-      setMainImageNum(`${currentImgNum + 1}`);
+      setSelectedImage(`${currentImgNum + 1}`);
     }
   };
 
   return (
     <div className={classes.gallery}>
-      <img
-        src={`/images/image-product-${mainImageNum}.jpg`}
-        alt='Fall Sneakers artfully photographed'
-        className={classes['main-image']}
-      />
+      <div className={classes['main-image__box']}>
+        <img
+          src={`/images/image-product-${selectedImage}.jpg`}
+          alt='Fall Sneakers artfully photographed'
+          className={classes['main-image']}
+          onClick={onShowLightBox}
+        />
 
-      <div className={classes.back} onClick={leftBtnClickHandler}>
-        <LeftSVG />
+        <div
+          className={inLightBox ? classes['lb-arrow-left'] : classes.back}
+          onMouseEnter={() => setLeftArrowIsHovered(true)}
+          onMouseLeave={() => setLeftArrowIsHovered(false)}
+          onClick={leftBtnClickHandler}
+        >
+          <LeftSVG
+            isHovered={leftArrowIsHovered}
+            inLB={inLightBox}
+            className={inLightBox ? classes['lightbox-arrow'] : ''}
+          />
+        </div>
+        <div
+          className={inLightBox ? classes['lb-arrow-right'] : classes.forth}
+          onClick={rightBtnClickHandler}
+          onMouseEnter={() => setRightArrowIsHovered(true)}
+          onMouseLeave={() => setRightArrowIsHovered(false)}
+        >
+          <RightSVG
+            isHovered={rightArrowIsHovered}
+            inLB={inLightBox}
+            className={inLightBox ? classes['lightbox-arrow'] : ''}
+          />
+        </div>
       </div>
-      <div className={classes.forth} onClick={rightBtnClickHandler}>
-        <RightSVG />
-      </div>
-      <div className={classes.thumbnails}>
+      <div
+        className={`${classes.thumbnails} ${
+          inLightBox ? classes.lightbox : ''
+        }`}
+      >
         <div
           className={`${classes['thumbnail-box']} ${
-            mainImageNum === '1' ? classes.active : ''
+            selectedImage === '1' ? classes.active : ''
           }`}
         >
           <img
             src='./images/image-product-1-thumbnail.jpg'
             alt=''
             className={`${classes.thumbnail} ${
-              mainImageNum === '1' ? classes.active : ''
+              selectedImage === '1' ? classes.active : ''
             }`}
             onClick={thumbnailClickHandler}
             id='1'
@@ -62,14 +94,14 @@ const ShoeGallery = () => {
         </div>
         <div
           className={`${classes['thumbnail-box']} ${
-            mainImageNum === '2' ? classes.active : ''
+            selectedImage === '2' ? classes.active : ''
           }`}
         >
           <img
             src='./images/image-product-2-thumbnail.jpg'
             alt=''
             className={`${classes.thumbnail} ${
-              mainImageNum === '2' ? classes.active : ''
+              selectedImage === '2' ? classes.active : ''
             }`}
             onClick={thumbnailClickHandler}
             id='2'
@@ -77,14 +109,14 @@ const ShoeGallery = () => {
         </div>
         <div
           className={`${classes['thumbnail-box']} ${
-            mainImageNum === '3' ? classes.active : ''
+            selectedImage === '3' ? classes.active : ''
           }`}
         >
           <img
             src='./images/image-product-3-thumbnail.jpg'
             alt=''
             className={`${classes.thumbnail} ${
-              mainImageNum === '3' ? classes.active : ''
+              selectedImage === '3' ? classes.active : ''
             }`}
             onClick={thumbnailClickHandler}
             id='3'
@@ -92,14 +124,14 @@ const ShoeGallery = () => {
         </div>
         <div
           className={`${classes['thumbnail-box']} ${
-            mainImageNum === '4' ? classes.active : ''
+            selectedImage === '4' ? classes.active : ''
           }`}
         >
           <img
             src='./images/image-product-4-thumbnail.jpg'
             alt=''
             className={`${classes.thumbnail} ${
-              mainImageNum === '4' ? classes.active : ''
+              selectedImage === '4' ? classes.active : ''
             }`}
             onClick={thumbnailClickHandler}
             id='4'
