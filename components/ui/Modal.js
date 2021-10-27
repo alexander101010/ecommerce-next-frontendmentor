@@ -1,35 +1,49 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import classes from './Modal.module.css';
+import classes from './Modal.module.scss';
 
 const Backdrop = (props) => {
-  return <div className={classes.backdrop} onClick={props.onClose}></div>;
+  const classNames = `${classes.backdrop} 
+  ${classes[`backdrop-${props.className}`]}`;
+  return <div className={classNames} onClick={props.onClose}></div>;
 };
 
 const ModalOverlay = (props) => {
+  const classNames = `${classes.modal} ${classes[props.className]}`;
+
   return (
-    <div className={classes.modal}>
+    <div className={classNames}>
       <div className={classes.content}>{props.children}</div>
     </div>
   );
 };
 
-const portalTarget = document.querySelector('#overlays');
+const Modal = ({ className, onClose, children }) => {
+  const [isBrowser, setIsBrowser] = useState(false);
 
-const Modal = (props) => {
-  return (
-    <Fragment>
-      {ReactDOM.createPortal(
-        <Backdrop onClose={props.onClose} />,
-        portalTarget
-      )}
-      {ReactDOM.createPortal(
-        <ModalOverlay>{props.children}</ModalOverlay>,
-        portalTarget
-      )}
-    </Fragment>
-  );
+  useEffect(() => {
+    setIsBrowser(true);
+  }, []);
+
+  if (isBrowser) {
+    return (
+      <Fragment>
+        {ReactDOM.createPortal(
+          <Backdrop onClose={onClose} className={className} />,
+          document.getElementById('backdrop-root')
+        )}
+        {ReactDOM.createPortal(
+          <ModalOverlay className={className} onClose={onClose}>
+            {children}
+          </ModalOverlay>,
+          document.getElementById('overlay-root')
+        )}
+      </Fragment>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Modal;
