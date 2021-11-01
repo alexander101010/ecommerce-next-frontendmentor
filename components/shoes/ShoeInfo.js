@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import QuantityStepper from '../ui/QuantityStepper';
 import Button from '../ui/Button';
 import CartSVG from '../svgs/CartSVG';
 
+import CartContext from '../../store/cart-context';
 import classes from './ShoeInfo.module.scss';
 
 const ShoeInfo = () => {
+  const cartCtx = useContext(CartContext);
+
   const [quantity, setQuantity] = useState(0);
+
   const decrementClickHandler = () => {
     if (quantity > 0) {
       setQuantity((prevState) => {
@@ -20,8 +24,18 @@ const ShoeInfo = () => {
     setQuantity((prevState) => prevState + 1);
     // setQuantity(quantity + 1);
   };
-  const AddToCartClickHandler = (e) => {
-    console.log(quantity);
+  const AddToCartClickHandler = () => {
+    /// should by dynamic, but since there is only one item I'll just leave it hardcoded with only the quantity dynamic
+    const item = {
+      id: 's1',
+      price: 125,
+      quantity: quantity,
+      title: 'Fall Limited Edition Sneakers',
+      imgPath: './images/image-product-1-thumbnail.jpg',
+      imgDescription: 'Sweet Fall Kicks',
+    };
+    cartCtx.addItem(item);
+    setQuantity(0);
   };
 
   return (
