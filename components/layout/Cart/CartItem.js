@@ -1,5 +1,5 @@
 import classes from './CartItem.module.scss';
-import GarbageSVG from '../../svgs/GarbageSVG';
+// import GarbageSVG from '../../svgs/GarbageSVG';
 
 export default function CartItem(props) {
   const { imgPath, imgDescription, title, price, quantity } = props;
@@ -18,10 +18,7 @@ export default function CartItem(props) {
         </p>
       </div>
       {/* <GarbageSVG /> Not working..? just coming out as a flat line, use emoji instead*/}
-      <p
-        className='hover-pointer'
-        // onClick={deleteItemHandler}
-      >
+      <p className='hover-pointer' onClick={props.onDeleteItem}>
         🗑
       </p>
     </div>
