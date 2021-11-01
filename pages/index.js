@@ -13,7 +13,7 @@ export default function Home() {
   const showCartHandler = () => setShowCart(true);
   const closeCartHandler = () => setShowCart(false);
 
-  const [showLightBox, setShowLightBox] = useState(true);
+  const [showLightBox, setShowLightBox] = useState(false);
   const showLightBoxHandler = (mainImage) => {
     setShowLightBox(true);
   };
@@ -47,6 +47,7 @@ export default function Home() {
           onClose={closeCartHandler}
           showCart={showCart}
         />
+
         <section className='shoe-container'>
           <ShoeGallery
             onShowLightBox={showLightBoxHandler}
