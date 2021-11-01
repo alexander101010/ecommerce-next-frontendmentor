@@ -12,17 +12,22 @@
 
   &__image {
     width: 3.5rem;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   &__infos {
-    color: $color-grayblue;
+    color: $color-dark-grayblue;
   }
 
   &__title {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
   }
 
   &__prices {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-top: 5px;
     span {
       font-weight: 700;
       color: $color-black;
