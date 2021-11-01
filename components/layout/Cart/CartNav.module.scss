@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 .avatar {
   height: 50px;
   margin-left: 45px;
@@ -10,7 +12,7 @@
   }
 
   &.active {
-    border: solid 2px hsl(26, 100%, 55%);
+    border: solid 2px $color-primary;
   }
 }
 
@@ -18,6 +20,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  svg {
+    transform: scale(1.2);
+  }
+}
+
+.cart-icon-container {
+  position: relative;
+  padding: 5px;
+}
+
+.cart-nav-badge {
+  // display: none; // TODO:
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: $color-primary;
+  color: $color-white;
+  padding: 1px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
 }
 
 @media only screen and (max-width: 800px) {
