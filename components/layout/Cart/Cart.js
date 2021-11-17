@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import CartContext from '../../../store/cart-context';
 
 import Modal from '../../ui/Modal';
@@ -8,13 +8,17 @@ import Button from '../../ui/Button';
 import classes from './Cart.module.scss';
 
 const Cart = (props) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const cartCtx = useContext(CartContext);
 
   const checkoutHandler = (e) => {
     e.preventDefault();
-    props.onClose();
-    alert('Thank you for your order!');
-    cartCtx.clearCart();
+    setIsSubmitted(true);
+    // alert('Thank you for your order!');
+    setTimeout(() => {
+      props.onClose();
+      cartCtx.clearCart();
+    }, 5000);
   };
 
   const deleteItemsHandler = (id) => {
@@ -25,7 +29,11 @@ const Cart = (props) => {
     <p className={classes['empty-cart-content']}>Your cart is empty.</p>
   );
 
-  console.log(cartCtx.items);
+  const thankYouForOrderMarkup = (
+    <p className={classes['empty-cart-content']}>Thank you for your order!</p>
+  );
+
+  // console.log(cartCtx.items);
 
   const cartItemsMarkup = (
     <div className={classes['cart-body']}>
@@ -57,7 +65,8 @@ const Cart = (props) => {
       <div className={classes['card-title-box']}>
         <h3 className={classes.title}>Cart</h3>
       </div>
-      {isCartEmpty ? emptyCartMarkup : cartItemsMarkup}
+      {!isSubmitted && (isCartEmpty ? emptyCartMarkup : cartItemsMarkup)}
+      {isSubmitted && thankYouForOrderMarkup}
     </Modal>
   );
 };
