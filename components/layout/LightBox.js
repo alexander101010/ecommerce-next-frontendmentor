@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ShoeGallery from '../shoes/ShoeGallery';
-import ExitXSVG from '../svgs/exitXSVG';
+import ExitXSVG from '../svgs/ExitXSVG';
 import Modal from '../ui/Modal';
 
 import classes from './LightBox.module.scss';
