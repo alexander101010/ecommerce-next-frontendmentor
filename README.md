@@ -2,6 +2,10 @@
 
 [Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
 
+## My Process
+
+I chose to use this opportunity to build the e-commerce mockup with React, starting with a new Next JS project. While Next may be a bit more than necessary for a single page, single route e-commerce website with one product, it was good practice and I became more comfortable using the Next architecture. From knowing where to put markup for the targete of a modal portal in a Next project (`pages/document` partial that allows you to make a custom Document), to managing the cartState with the useContext hook and component states with useState, this project was a comfortable test of my React/Next knowledge.
+
 ## The challenge
 
 Your challenge is to build out this e-commerce product page and get it looking as close to the design as possible.
@@ -17,8 +21,6 @@ Your users should be able to:
 - Switch the large product image by clicking on the small thumbnail images
 - Add items to the cart
 - View the cart and remove items from it
-
-## My Process
 
 ## Building your project
 
